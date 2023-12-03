@@ -21,21 +21,3 @@ class Obstacle:
             pygame.draw.rect(
                 screen, self.color, (self.x, self.y, self.width, self.height)
             )
-
-    def calculate_corner_positions(self):
-        x, y = self.x, self.y
-        width, height = self.width, self.height
-        orientation = self.orientation
-
-        if orientation == "vertical":
-            top_left = (x, y)
-            top_right = (x + width, y)
-            bottom_left = (x, y + height)
-            bottom_right = (x + width, y + height)
-        elif orientation == "horizontal":
-            top_left = (x, y)
-            top_right = (x + width, y)
-            bottom_left = (x, y + height)
-            bottom_right = (x + width, y + height)
-
-        return top_left, top_right, bottom_left, bottom_right

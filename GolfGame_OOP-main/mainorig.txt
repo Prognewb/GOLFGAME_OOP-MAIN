@@ -146,21 +146,18 @@ while running:
             and ball.current_pos[1] + ball.radius >= obstacle.y
             and ball.current_pos[1] - ball.radius <= obstacle.y + obstacle.height
         ):
-            # Adjust position based on collision with obstacle's edges
+            # Adjust x position based on collision with obstacle's x edges
+            # Adjust y position based on collision with obstacle's y edges
             ball.adjust_position(obstacle)
 
             # Reverse speed components based on the collision
             ball.reverse_speed(obstacle)
 
-            # Check for additional collisions with corners
-            ball.check_collision_with_obstacle(obstacle)
-            
             # Additional checks for corners
             # ball.handle_corner_collisions(obstacle)
 
-            if hasattr(ball, 'special_attribute'):
-                if ball.special_attribute == "Sticky":
-                    ball.handle_collision(screen_width=width, screen_height=height, obstacles=obstacles)
+            if hasattr(ball, 'special_attribute') and ball.special_attribute == "Sticky":
+                ball.handle_collision(screen_width=width, screen_height=height, obstacles=obstacles)
 
     distance_to_hole = (
         (ball.current_pos[0] - hole.x) ** 2 + (ball.current_pos[1] - hole.y) ** 2
