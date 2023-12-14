@@ -12,30 +12,16 @@ class Obstacle:
             self.width = height
             self.height = width
 
-    def draw(self, screen, pygame):  # Pass pygame as an argument
-        if self.orientation == "vertical":
-            pygame.draw.rect(
-                screen, self.color, (self.x, self.y, self.width, self.height)
-            )
-        elif self.orientation == "horizontal":
-            pygame.draw.rect(
-                screen, self.color, (self.x, self.y, self.width, self.height)
-            )
+    def draw(self, screen, pygame):  
+        pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
+
 
     def calculate_corner_positions(self):
-        x, y = self.x, self.y
-        width, height = self.width, self.height
-        orientation = self.orientation
+        x, y, width, height = self.x, self.y, self.width, self.height
 
-        if orientation == "vertical":
-            top_left = (x, y)
-            top_right = (x + width, y)
-            bottom_left = (x, y + height)
-            bottom_right = (x + width, y + height)
-        elif orientation == "horizontal":
-            top_left = (x, y)
-            top_right = (x + width, y)
-            bottom_left = (x, y + height)
-            bottom_right = (x + width, y + height)
+        top_left = (x, y)
+        top_right = (x + width, y)
+        bottom_left = (x, y + height)
+        bottom_right = (x + width, y + height)
 
         return top_left, top_right, bottom_left, bottom_right
